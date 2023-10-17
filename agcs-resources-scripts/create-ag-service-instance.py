@@ -26,8 +26,8 @@ def create_instance(ag_cp_composite_client, signer):
 
 
 def get_name_space():
-    signer_obj = auth_util_ip.get_si_signer()
-    object_storage_client = oci.object_storage.ObjectStorageClient(config={}, signer=signer_obj)
+    signer_obj, config_obj = auth_util_ip.get_si_signer_and_config()
+    object_storage_client = oci.object_storage.ObjectStorageClient(config=config_obj, signer=signer_obj)
     namespace_response = object_storage_client.get_namespace()
     return namespace_response.__dict__['data']
 
@@ -36,9 +36,10 @@ if __name__ == '__main__':
     auth_util_ip.init()
     service_endpoint = ("https://access-governance." + os.environ["ADMIN_REGION_SERVICE_INSTANCE"]
                         + ".oci.oraclecloud.com")
-    signer_object = auth_util_ip.get_si_signer()
-    access_governance_cp_client = oci.access_governance_cp.AccessGovernanceCPClient(config={}, signer=signer_object,
+    signer_object, config_object = auth_util_ip.get_si_signer_and_config()
+    access_governance_cp_client = oci.access_governance_cp.AccessGovernanceCPClient(config=config_object,
+                                                                                    signer=signer_object,
                                                                                     service_endpoint=service_endpoint)
     agCompositeClient = oci.access_governance_cp.AccessGovernanceCPClientCompositeOperations(
-        access_governance_cp_client, config={}, signer=signer_object, service_endpoint=service_endpoint)
+        access_governance_cp_client, config=config_object, signer=signer_object, service_endpoint=service_endpoint)
     create_instance(agCompositeClient, signer_object)
