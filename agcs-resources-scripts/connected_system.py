@@ -104,7 +104,6 @@ def add_cloud_gateway_connector(ag_access_token, ag_si_url):
 
 
 def execute_add_connected_system(ag_si_name):
-    auth_util_ip.init()
     client_credentials = get_app_details(ag_si_name)
     access_token = auth_util_ip.get_ag_authorization_token(client_credentials.get("client_id"),
                                                            client_credentials.get("client_secret"),
