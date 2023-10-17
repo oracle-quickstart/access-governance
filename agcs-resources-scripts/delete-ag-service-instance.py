@@ -16,14 +16,14 @@ def delete_instance(ag_cp_composite_client):
 
 
 if __name__ == '__main__':
-    signer_object = auth_util_ip.get_si_signer()
+    signer_object, config_object = auth_util_ip.get_si_signer_and_config()
     service_endpoint = ("https://access-governance." + os.environ["ADMIN_REGION_SERVICE_INSTANCE"]
                         + ".oci.oraclecloud.com")
-    access_governance_cp_client = oci.access_governance_cp.AccessGovernanceCPClient(config={},
+    access_governance_cp_client = oci.access_governance_cp.AccessGovernanceCPClient(config=config_object,
                                                                                     service_endpoint=service_endpoint,
                                                                                     signer=signer_object)
 
     agCompositeClient = oci.access_governance_cp.AccessGovernanceCPClientCompositeOperations(
-        access_governance_cp_client, config={}, service_endpoint=service_endpoint)
+        access_governance_cp_client, config=config_object, service_endpoint=service_endpoint)
 
     delete_instance(agCompositeClient)

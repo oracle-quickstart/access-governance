@@ -6,8 +6,8 @@ import os
 
 
 def get_instance_app_ocid(ag_si_name):
-    signer = auth_util_ip.get_si_signer()
-    identity_domains_client_obj = oci.identity_domains.IdentityDomainsClient(config={},
+    signer, config = auth_util_ip.get_si_signer_and_config()
+    identity_domains_client_obj = oci.identity_domains.IdentityDomainsClient(config=config,
                                                                              service_endpoint=os.environ[
                                                                                  "IDCS_ENDPOINT"], signer=signer)
     response = identity_domains_client_obj.list_apps(filter='displayName eq "AG-' + ag_si_name + '"')
@@ -20,8 +20,8 @@ def get_instance_app_ocid(ag_si_name):
 
 def get_app_details(ag_si_name):
     domain_app_id = get_instance_app_ocid(ag_si_name)
-    signer = auth_util_ip.get_si_signer()
-    identity_domains_client_obj = oci.identity_domains.IdentityDomainsClient(config={},
+    signer, config = auth_util_ip.get_si_signer_and_config()
+    identity_domains_client_obj = oci.identity_domains.IdentityDomainsClient(config=config,
                                                                              service_endpoint=os.environ[
                                                                                  "IDCS_ENDPOINT"], signer=signer)
     response = identity_domains_client_obj.get_app(domain_app_id,
@@ -56,7 +56,7 @@ def add_cloud_gateway_connector(ag_access_token, ag_si_url):
     add_target_path = "/targets"
     templates_response = execute_tms_api(tms_base_url + template_path, ag_access_token, None, "GET")
     if templates_response["items"]:
-        private_key_from_file = auth_util_ip.get_connected_system_pvt_key()
+        private_key_from_file = auth_util_ip.get_agcs_user_pvt_keys()
         template_id = templates_response["items"][0]["id"]
         body = {
             "displayName": os.environ["OCI_SYSTEM_NAME"],
