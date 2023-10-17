@@ -4,50 +4,53 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 
-def init():
-    init_admin_pvt_keys()
-
-
-def replace_space_with_new_line(str_input):
-    result = str_input
-    if str_input.count(' ') > 4:
-        start = "-----BEGIN PRIVATE KEY-----"
-        end = "-----END PRIVATE KEY-----"
-        extract_key = str_input[str_input.find(start) + len(start):str_input.rfind(end)]
-        extract_key = extract_key.replace(' ', "\\n")
-        result = start + extract_key + end
-    return result
-
-
-def init_agcs_user_pvt_keys():
-    parent_dir = os.path.realpath('.')
-    si_key_filename = os.path.join(parent_dir, 'resource', 'user_si_pvt_key.pem')
-    si_private_key = os.environ["ADMIN_PRIVATE_KEY_SERVICE_INSTANCE"]
-    si_pvt_key_file = open(si_key_filename, "w+")
-    if si_private_key and not si_private_key.isspace():
-        si_private_key = replace_space_with_new_line(si_private_key)
-        si_pvt_key_file.write(si_private_key.encode('raw_unicode_escape').decode('unicode_escape'))
-    else:
-        files = os.listdir(os.path.join(parent_dir, 'private_key_si'))
-        user_pvt_key_files = [file_ for file_ in files if file_.endswith('.pem')]
-        if user_pvt_key_files:
-            user_pvt_key_file = open(os.path.join(parent_dir, 'private_key_si', user_pvt_key_files[0]), "r")
-            file_contents = user_pvt_key_file.read()
-            user_pvt_key_file.close()
-            si_pvt_key_file.write(file_contents)
-    si_pvt_key_file.close()
-
-
-def init_admin_pvt_keys():
-    parent_dir = os.path.realpath('.')
-    connected_system_key_filename = os.path.join(parent_dir, 'resource', 'user_connected_system_pvt_key.pem')
-    connected_system_pvt_key_file = open(connected_system_key_filename, "w+")
-    connected_system_user_private_key = os.environ["AGCS_USER_PRIVATE_KEY_OCI_SYSTEM"]
-    if connected_system_user_private_key and not connected_system_user_private_key.isspace():
-        connected_system_user_private_key = replace_space_with_new_line(connected_system_user_private_key)
-        connected_system_pvt_key_file.write(connected_system_user_private_key.encode('raw_unicode_escape')
-                                            .decode('unicode_escape'))
-    connected_system_pvt_key_file.close()
+# def replace_space_with_new_line(str_input):
+#     result = str_input
+#     if str_input.count(' ') > 4:
+#         start = "-----BEGIN PRIVATE KEY-----"
+#         end = "-----END PRIVATE KEY-----"
+#         extract_key = str_input[str_input.find(start) + len(start):str_input.rfind(end)]
+#         extract_key = extract_key.replace(' ', "\\n")
+#         result = start + extract_key + end
+#     return result
+#
+#
+# def init_agcs_user_pvt_keys():
+#     parent_dir = os.path.realpath('.')
+#     si_key_filename = os.path.join(parent_dir, 'resource', 'user_si_pvt_key.pem')
+#     si_private_key = os.environ["ADMIN_PRIVATE_KEY_SERVICE_INSTANCE"]
+#     si_pvt_key_file = open(si_key_filename, "w+")
+#     if si_private_key and not si_private_key.isspace():
+#         si_private_key = replace_space_with_new_line(si_private_key)
+#         si_pvt_key_file.write(si_private_key.encode('raw_unicode_escape').decode('unicode_escape'))
+#     else:
+#         files = os.listdir(os.path.join(parent_dir, 'private_key_si'))
+#         user_pvt_key_files = [file_ for file_ in files if file_.endswith('.pem')]
+#         if user_pvt_key_files:
+#             user_pvt_key_file = open(os.path.join(parent_dir, 'private_key_si', user_pvt_key_files[0]), "r")
+#             file_contents = user_pvt_key_file.read()
+#             user_pvt_key_file.close()
+#             si_pvt_key_file.write(file_contents)
+#     si_pvt_key_file.close()
+#
+#
+# def init_admin_pvt_keys():
+#     parent_dir = os.path.realpath('.')
+#     connected_system_key_filename = os.path.join(parent_dir, 'resource', 'user_connected_system_pvt_key.pem')
+#     connected_system_pvt_key_file = open(connected_system_key_filename, "w+")
+#     connected_system_user_private_key = os.environ["AGCS_USER_PRIVATE_KEY_OCI_SYSTEM"]
+#     if connected_system_user_private_key and not connected_system_user_private_key.isspace():
+#         connected_system_user_private_key = replace_space_with_new_line(connected_system_user_private_key)
+#         connected_system_pvt_key_file.write(connected_system_user_private_key.encode('raw_unicode_escape')
+#                                             .decode('unicode_escape'))
+#     connected_system_pvt_key_file.close()
+#
+# def get_admin_pvt_keys():
+#     parent_dir = os.path.realpath('.')
+#     admin_pvt_key_file = open(os.path.join(parent_dir, 'private-keys', 'admin_pvt_key.pem'), "r")
+#     content_cs = admin_pvt_key_file.read()
+#     admin_pvt_key_file.close()
+#     return content_cs
 
 
 def get_si_signer_and_config():
@@ -103,14 +106,6 @@ def get_ag_authorization_token(user, password, ag_instance_url):
     response_json = response.json()
 
     return response_json['access_token']
-
-
-def get_admin_pvt_keys():
-    parent_dir = os.path.realpath('.')
-    admin_pvt_key_file = open(os.path.join(parent_dir, 'private-keys', 'admin_pvt_key.pem'), "r")
-    content_cs = admin_pvt_key_file.read()
-    admin_pvt_key_file.close()
-    return content_cs
 
 
 def get_agcs_user_pvt_keys():
