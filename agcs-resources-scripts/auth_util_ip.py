@@ -56,6 +56,7 @@ from requests.auth import HTTPBasicAuth
 def get_si_signer_and_config():
     config = get_admin_config()
     if not config:
+        config = {}
         signer = oci.auth.signers.InstancePrincipalsDelegationTokenSigner(delegation_token=os.environ["OCI_obo_token"])
     else:
         signer = oci.Signer.from_config(config)
