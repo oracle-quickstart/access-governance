@@ -1,5 +1,7 @@
 import os
 import oci
+from oci import exceptions
+
 import auth_util_ip
 import connected_system
 import json
@@ -15,14 +17,27 @@ def create_instance(ag_cp_composite_client, signer):
         tenancy_namespace=get_name_space(),
         compartment_id=os.environ["SERVICE_INSTANCE_COMPARTMENT_OCID"],
         idcs_access_token=token)
-    response = ag_cp_composite_client.create_governance_instance_and_wait_for_state(details,
-                                                                                    wait_for_states=["ACTIVE",
-                                                                                                     "NEEDS_ATTENTION"])
-    json_res = json.dumps(str(response.__dict__['data']), indent=2)
-    si_name = response.__dict__['data'].display_name
-    connected_system.execute_add_connected_system(si_name)
-    output = base64.b64encode(json_res.encode()).decode()
-    print(output)
+    si_name = None
+    output = None
+    try:
+        response = (ag_cp_composite_client
+                    .create_governance_instance_and_wait_for_state(details, wait_for_states=["ACTIVE",
+                                                                                             "NEEDS_ATTENTION"]))
+        json_res = json.dumps(str(response.__dict__['data']), indent=2)
+        output = json_res.encode()
+        si_name = response.__dict__['data'].display_name
+    except exceptions.ServiceError as errorResponse:
+        si_name = os.environ["SERVICE_INSTANCE_DISPLAY_NAME"]
+        if errorResponse.code == "NotAuthorizedOrResourceAlreadyExists":
+            si_list = (ag_cp_composite_client.client
+                       .list_governance_instances(os.environ["SERVICE_INSTANCE_COMPARTMENT_OCID"]))
+            for instance_summary in si_list.data.items:
+                if instance_summary.display_name and str(instance_summary.display_name) == si_name:
+                    output = {"id": instance_summary.id}
+
+    if si_name and not si_name.isspace():
+        connected_system.execute_add_connected_system(si_name)
+    print(base64.b64encode(output).decode())
 
 
 def get_name_space():

@@ -7,7 +7,7 @@ import os
 
 def get_instance_app_ocid(ag_si_name):
     signer, config = auth_util_ip.get_si_signer_and_config()
-    identity_domains_client_obj = oci.identity_domains.IdentityDomainsClient(config=config,
+    identity_domains_client_obj = oci.identity_domains.IdentityDomainsClient(config,
                                                                              service_endpoint=os.environ[
                                                                                  "IDCS_ENDPOINT"], signer=signer)
     response = identity_domains_client_obj.list_apps(filter='displayName eq "AG-' + ag_si_name + '"')
