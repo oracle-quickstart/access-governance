@@ -110,8 +110,17 @@ def get_ag_authorization_token(user, password, ag_instance_url):
 
 
 def get_agcs_user_pvt_keys():
+    use_existing_user = os.environ["USE_EXISTING_AGCS_USER"]
+    private_key = os.environ["AGCS_USER_PRIVATE_KEY"]
     agcs_user_pvt_key_path = os.environ["AGCS_USER_PRIVATE_KEY_PATH"]
-    agcs_user_pvt_key_file = open(agcs_user_pvt_key_path, "r")
-    content_cs = agcs_user_pvt_key_file.read()
-    agcs_user_pvt_key_file.close()
+    if use_existing_user.lower() == "true":
+        if agcs_user_pvt_key_path and not agcs_user_pvt_key_path.isspace():
+            agcs_user_pvt_key_file = open(agcs_user_pvt_key_path, "r")
+            content_cs = agcs_user_pvt_key_file.read()
+            agcs_user_pvt_key_file.close()
+        else:
+            content_cs = private_key
+    else:
+        content_cs = private_key
+
     return content_cs
