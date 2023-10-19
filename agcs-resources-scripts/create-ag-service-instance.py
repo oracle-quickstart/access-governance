@@ -8,12 +8,17 @@ import json
 import base64
 
 
+ag_license_dict = {"Access Governance Premium": "AG_PREMIUM",
+                   "Access Governance for Oracle Workloads": "AG_ORACLE_WORKLOADS",
+                   "Access Governance for Oracle Cloud Infrastructure": "AG_OCI"}
+
+
 def create_instance(ag_cp_composite_client, signer):
     token = auth_util_ip.get_idcs_access_token(signer)
     details = oci.access_governance_cp.models.CreateGovernanceInstanceDetails(
         display_name=os.environ["SERVICE_INSTANCE_DISPLAY_NAME"],
         description=os.environ["SERVICE_INSTANCE_DESCRIPTION"],
-        license_type=os.environ["AG_LICENSE_TYPE"],
+        license_type=ag_license_dict[os.environ["AG_LICENSE_TYPE"]],
         tenancy_namespace=get_name_space(),
         compartment_id=os.environ["SERVICE_INSTANCE_COMPARTMENT_OCID"],
         idcs_access_token=token)
