@@ -1,12 +1,12 @@
 import os
 import oci
 from oci import exceptions
+from requests.exceptions import SSLError
 
 import auth_util_ip
 import connected_system
 import json
 import base64
-
 
 ag_license_dict = {"Access Governance Premium": "AG_PREMIUM",
                    "Access Governance for Oracle Workloads": "AG_ORACLE_WORKLOADS",
@@ -39,8 +39,10 @@ def create_instance(ag_cp_composite_client, signer):
             for instance_summary in si_list.data.items:
                 if instance_summary.display_name and str(instance_summary.display_name) == si_name:
                     output = {"id": instance_summary.id}
-
-    if si_name and not si_name.isspace():
+    except SSLError:
+        pass
+    should_create_connected_system = os.environ["SHOULD_CREATE_CONNECTED_SYSTEM"]
+    if should_create_connected_system == "true" and si_name and (not si_name.isspace()):
         connected_system.execute_add_connected_system(si_name)
     print(base64.b64encode(output).decode())
 
@@ -55,6 +57,10 @@ def get_name_space():
 if __name__ == '__main__':
     service_endpoint = ("https://access-governance." + os.environ["ADMIN_REGION_SERVICE_INSTANCE"]
                         + ".oci.oraclecloud.com")
+
+    if auth_util_ip.is_namespace_used():
+        service_endpoint = os.environ["NAMESPACE_SERVICE_ENDPOINT"]
+
     signer_object, config_object = auth_util_ip.get_si_signer_and_config()
     access_governance_cp_client = oci.access_governance_cp.AccessGovernanceCPClient(config=config_object,
                                                                                     signer=signer_object,

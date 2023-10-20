@@ -124,3 +124,16 @@ def get_agcs_user_pvt_keys():
         content_cs = private_key
 
     return content_cs
+
+
+def should_verify_ssl():
+    return not is_namespace_used()
+
+
+def is_namespace_used():
+    namespace_url = os.environ["NAMESPACE_SERVICE_ENDPOINT"]
+    if namespace_url and not namespace_url.isspace():
+        return True
+    return False
+
+
