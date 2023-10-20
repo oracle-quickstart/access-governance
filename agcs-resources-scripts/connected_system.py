@@ -42,9 +42,9 @@ def execute_tms_api(url, token, body, method):
                "Authorization": "Bearer " + token}
 
     if method == "GET":
-        response = requests.get(url, headers=headers, data=None)
+        response = requests.get(url, headers=headers, data=None, verify=auth_util_ip.should_verify_ssl())
     else:
-        response = requests.post(url, headers=headers, data=json.dumps(body))
+        response = requests.post(url, headers=headers, data=json.dumps(body), verify=auth_util_ip.should_verify_ssl())
 
     if response.status_code == 200 and response.text:
         return json.loads(response.text)
