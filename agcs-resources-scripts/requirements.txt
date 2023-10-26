@@ -1,2 +1,2 @@
-oci
-requests
+oci==2.111.0
+requests==2.31.0
