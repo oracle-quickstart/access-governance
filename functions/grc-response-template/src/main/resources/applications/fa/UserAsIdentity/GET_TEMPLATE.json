@@ -1,0 +1,138 @@
+{
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.userName</JP>"
+    },
+    {
+      "name": "displayName",
+      "value": "<JP>$.displayName</JP>"
+    },
+    {
+      "name": "lastName",
+      "value": "<JP>$.name.familyName</JP>"
+    },
+    {
+      "name": "firstName",
+      "value": "<JP>$.name.givenName</JP>"
+    },
+    {
+      "name": "email",
+      "value": "<JP>$.emails[?(@.primary == true)].value</JP>"
+    },
+    {
+      "name": "active",
+      "value": "<JP>$.active</JP>"
+    },
+    {
+      "name": "personNumber",
+      "value": "<JP>$.['urn:scim:schemas:extension:fa:2.0:faUser'].workerInformation.personNumber</JP>"
+    },
+    {
+      "name": "manager",
+      "value": "<JP>$.['urn:scim:schemas:extension:fa:2.0:faUser'].workerInformation.manager</JP>"
+    },
+    {
+      "name": "job",
+      "value": "<JP>$.['urn:scim:schemas:extension:fa:2.0:faUser'].workerInformation.job</JP>"
+    },
+    {
+      "name": "businessUnit",
+      "value": "<JP>$.['urn:scim:schemas:extension:fa:2.0:faUser'].workerInformation.businessUnit</JP>"
+    },
+    {
+      "name": "organizationName",
+      "value": "<JP>$.['urn:scim:schemas:extension:fa:2.0:faUser'].workerInformation.department</JP>"
+    },
+    {
+      "name": "workRelationships",
+      "responseOfSubRequestId": "1",
+      "items": "<JP>$.items[*].workRelationships.items[*]</JP>",
+      "subAttributes": [
+        {
+          "name": "periodOfServiceId",
+          "value": "<JP>$.items[*].workRelationships.items[<EL>currentIndex</EL>].PeriodOfServiceId</JP>"
+        },
+        {
+          "name": "legalEntityId",
+          "value": "<JP>$.items[*].workRelationships.items[<EL>currentIndex</EL>].LegalEntityId</JP>"
+        },
+        {
+          "name": "startDate",
+          "value": "<JP>$.items[*].workRelationships.items[<EL>currentIndex</EL>].StartDate</JP>"
+        },
+        {
+          "name": "terminationDate",
+          "value": "<JP>$.items[*].workRelationships.items[<EL>currentIndex</EL>].TerminationDate</JP>"
+        },
+        {
+          "name": "primaryFlag",
+          "value": "<JP>$.items[*].workRelationships.items[<EL>currentIndex</EL>].PrimaryFlag</JP>"
+        }
+      ]
+    },
+    {
+      "name": "assignments",
+      "responseOfSubRequestId": "1",
+      "items": "<JP>$.items[*].workRelationships.items[*].assignments.items[*]</JP>",
+      "subAttributes": [
+        {
+          "name": "assignmentId",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].AssignmentId</JP>"
+        },
+        {
+          "name": "assignmentNumber",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].AssignmentNumber</JP>"
+        },
+        {
+          "name": "actionCode",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].ActionCode</JP>"
+        },
+        {
+          "name": "effectiveStartDate",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].EffectiveStartDate</JP>"
+        },
+        {
+          "name": "effectiveEndDate",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].EffectiveEndDate</JP>"
+        },
+        {
+          "name": "organizationId",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].DepartmentId</JP>"
+        },
+        {
+          "name": "jobId",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].JobId</JP>"
+        },
+        {
+          "name": "jobCode",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].JobCode</JP>"
+        },
+        {
+          "name": "gradeId",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].GradeId</JP>"
+        },
+        {
+          "name": "locationId",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].LocationId</JP>"
+        },
+        {
+          "name": "AssignmentType",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].AssignmentType</JP>"
+        },
+        {
+          "name": "AssignmentStatusType",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].AssignmentStatusType</JP>"
+        },
+        {
+          "name": "primaryAssignmentFlag",
+          "value": "<JP>$.items[*].workRelationships.items[*].assignments.items[<EL>currentIndex</EL>].PrimaryAssignmentFlag</JP>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "1",
+  "name": "Search Users sort by displayName",
+  "paginationType": "OFFSET",
+  "method": "GET",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/hcmRestApi/scim/Users"
+  },
+  "queryParameters": [
+    {
+      "name": "startIndex",
+      "value": "<EL>currentOffset</EL>"
+    },
+    {
+      "name": "count",
+      "value": "<EL>limit</EL>"
+    },
+    {
+      "name": "sortBy",
+      "value": "displayName"
+    }
+  ],
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ],
+  "subRequests": [
+    {
+      "id": "1",
+      "name": "Get workRelationships and assignments",
+      "paginationType": "OFFSET",
+      "method": "GET",
+      "uri": {
+        "scheme": "<<SCHEME>>",
+        "host": "<<HOST>>",
+        "path": "/hcmRestApi/resources/latest/workers"
+      },
+      "queryParameters": [
+        {
+          "name": "offset",
+          "value": "<EL>currentOffset</EL>"
+        },
+        {
+          "name": "limit",
+          "value": "<EL>limit</EL>"
+        },
+        {
+          "name": "orderBy",
+          "value": "PeriodOfServiceId"
+        },
+        {
+          "name": "expand",
+          "value": "workRelationships.assignments"
+        },
+        {
+          "name": "onlyData",
+          "value": "true"
+        },
+        {
+          "name": "q",
+          "value": "PersonNumber in ('<JP>$.Resources[<EL>parentCurrentIndex</EL>]['urn:scim:schemas:extension:fa:2.0:faUser'].workerInformation.personNumber</JP>')"
+        }
+      ],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "<<CREDENTIALS>>"
+        }
+      ]
+    }
+  ]
+}

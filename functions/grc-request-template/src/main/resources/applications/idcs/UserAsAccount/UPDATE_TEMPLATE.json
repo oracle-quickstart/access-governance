@@ -1,0 +1,42 @@
+{
+  "id": "1",
+  "name": "Update User",
+  "method": "PUT",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Users/<EL>attributes.get('uid').get(0)</EL>"
+  },
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ],
+  "body": {
+    "type": "text",
+    "textBody": {
+      "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "userName": "<EL>attributes.get('name').get(0)</EL>",
+      "active": "UQ:<EL>attributes.get('status').get(0)</EL>",
+      "name": {
+        "familyName": "<EL>attributes.get('firstName').get(0)</EL>",
+        "givenName": "<EL>attributes.get('lastName').get(0)</EL>",
+        "middleName": "<EL>attributes.get('middleName').get(0)</EL>"
+      },
+      "emails": [
+        {
+          "value": "<EL>attributes.get('email').get(0)</EL>",
+          "type": "work",
+          "primary": true
+        }
+      ]
+    }
+  }
+}

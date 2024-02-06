@@ -1,0 +1,12 @@
+{
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.displayName</JP>"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+[
+  {
+    "name": "uid",
+    "dataType": "TEXT",
+    "nature": [
+      "REQUIRED"
+    ],
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "name",
+    "dataType": "TEXT",
+    "nature": [
+      "REQUIRED"
+    ],
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "email",
+    "dataType": "TEXT",
+    "nature": [
+      "REQUIRED"
+    ],
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "firstName",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "middleName",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "lastName",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "displayName",
+    "dataType": "TEXT",
+    "nature": [
+      "REQUIRED"
+    ],
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "employeeType",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "title",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "empNo",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "status",
+    "dataType": "FLAG",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "jobCode",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "state",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "risk",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "location",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "department",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "managerUid",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "managerLogin",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "organizationUid",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "organizationName",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "country",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "postalCode",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  },
+  {
+    "name": "territory",
+    "dataType": "TEXT",
+    "usage": [
+      "READ"
+    ]
+  }
+]

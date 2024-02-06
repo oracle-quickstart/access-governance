@@ -1,0 +1,593 @@
+{
+  "schemaTemplates": [
+    {
+      "type": "ACCOUNT",
+      "name": "UserAsIdentity",
+      "displayName": "User As Identity",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "displayName",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "lastName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "firstName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "email",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "active",
+          "dataType": "FLAG",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "personNumber",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "manager",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "job",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "businessUnit",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "organizationName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "workRelationships",
+          "dataType": "TEXT",
+          "nature": [
+            "MULTIVALUED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "WorkRelationships",
+            "relatedBy": "personNumber"
+          }
+        },
+        {
+          "name": "assignments",
+          "dataType": "TEXT",
+          "nature": [
+            "MULTIVALUED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "Assignments",
+            "relatedBy": "personNumber"
+          }
+        }
+      ]
+    },
+    {
+      "type": "LOOKUP",
+      "name": "WorkRelationships",
+      "displayName": "Work Relationships",
+      "attributes": [
+        {
+          "name": "periodOfServiceId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "legalEntityId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "startDate",
+          "dataType": "DATE",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "terminationDate",
+          "dataType": "DATE",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "primaryFlag",
+          "dataType": "FLAG",
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LOOKUP",
+      "name": "Assignments",
+      "displayName": "Assignments",
+      "attributes": [
+        {
+          "name": "assignmentId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "assignmentNumber",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "actionCode",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "effectiveStartDate",
+          "dataType": "DATE",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "effectiveEndDate",
+          "dataType": "DATE",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "organizationId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "jobId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "jobCode",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "gradeId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "locationId",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "AssignmentType",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "AssignmentStatusType",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "primaryAssignmentFlag",
+          "dataType": "FLAG",
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TARGETACCOUNT",
+      "name": "UserAsAccount",
+      "displayName": "User As Account",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "User ID",
+            "labelHint": "User ID",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getUserName()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "User Name",
+            "labelHint": "User Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "password",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED",
+            "SENSITIVE"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "User",
+            "widget": "Password",
+            "title": "Password",
+            "labelHint": "Password",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "status",
+          "dataType": "FLAG",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getStatus()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Status",
+            "labelHint": "Status",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "externalID",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getExternalId()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "External Id",
+            "labelHint": "External Id",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "familyName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getName().getGivenName()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Family Name",
+            "labelHint": "Family Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "givenName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getName().getFamilyName()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Given Name",
+            "labelHint": "Given Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "preferredLanguage",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "Admin",
+            "widget": "SelectOne",
+            "title": "Language",
+            "labelHint": "Language",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "displayName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getDisplayName()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Display Name",
+            "labelHint": "Display Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "email",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getPrimaryEmail()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Email",
+            "labelHint": "Email",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "roles",
+          "dataType": "TEXT",
+          "nature": [
+            "MULTIVALUED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "RoleAsEntitlement",
+            "relatedBy": "uid"
+          },
+          "uiProperties": {
+            "inputType": "Admin",
+            "widget": "RepeatableFieldSet",
+            "title": "Roles",
+            "labelHint": "Roles",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        }
+      ]
+    },
+    {
+      "type": "ENTITLEMENT",
+      "name": "RoleAsEntitlement",
+      "displayName": "Role As Entitlement",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "displayName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "description",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "category",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "type",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "lastModified",
+          "dataType": "DATE",
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "LOOKUP",
+      "name": "Organization",
+      "displayName": "Organization",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    }
+  ]
+}

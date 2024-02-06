@@ -1,0 +1,35 @@
+{
+  "id": "1",
+  "name": "Search Users As Identity sort by displayName",
+  "paginationType": "OFFSET",
+  "method": "GET",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Users"
+  },
+  "queryParameters": [
+    {
+      "name": "startIndex",
+      "value": "<EL>currentOffset</EL>"
+    },
+    {
+      "name": "count",
+      "value": "<EL>limit</EL>"
+    },
+    {
+      "name": "sortBy",
+      "value": "displayName"
+    }
+  ],
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ]
+}

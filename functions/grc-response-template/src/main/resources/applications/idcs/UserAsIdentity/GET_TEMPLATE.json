@@ -1,0 +1,48 @@
+{
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.userName</JP>"
+    },
+    {
+      "name": "email",
+      "value": "<JP>$.emails[?(@.primary == true)].value</JP>"
+    },
+    {
+      "name": "firstName",
+      "value": "<JP>$.name.familyName</JP>"
+    },
+    {
+      "name": "lastName",
+      "value": "<JP>$.name.givenName</JP>"
+    },
+    {
+      "name": "displayName",
+      "value": "<JP>$.displayName</JP>"
+    },
+    {
+      "name": "usageLocation",
+      "value": "<JP>$.addresses[?(@.type == 'work')].country</JP>"
+    },
+    {
+      "name": "country",
+      "value": "<JP>$.addresses[?(@.type == 'work')].country</JP>"
+    },
+    {
+      "name": "managerLogin",
+      "value": "<JP>$.['urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'].manager.value</JP>"
+    },
+    {
+      "name": "preferredLanguage",
+      "value": "<JP>$.preferredLanguage</JP>"
+    },
+    {
+      "name": "status",
+      "value": "<JP>$.active</JP>"
+    }
+  ]
+}

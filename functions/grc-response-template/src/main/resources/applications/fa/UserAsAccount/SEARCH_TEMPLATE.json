@@ -1,0 +1,45 @@
+{
+  "items": "<JP>$.Resources[*]</JP>",
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].userName</JP>"
+    },
+    {
+      "name": "status",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].active</JP>"
+    },
+    {
+      "name": "externalID",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].externalID</JP>"
+    },
+    {
+      "name": "familyName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].name.familyName</JP>"
+    },
+    {
+      "name": "givenName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].name.givenName</JP>"
+    },
+    {
+      "name": "preferredLanguage",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].preferredLanguage</JP>"
+    },
+    {
+      "name": "displayName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].displayName</JP>"
+    },
+    {
+      "name": "email",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].emails[?(@.primary == true)].value</JP>"
+    },
+    {
+      "name": "roles",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].roles</JP>"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+application: "idcs"
+connectedSystemConfigs:
+  - connectedSystemName: "<<IDCS_CONNECTED_SYSTEM_NAME_1>>"
+  - connectedSystemName: "<<IDCS_CONNECTED_SYSTEM_NAME_2>>"
+  - connectedSystemName: "<<IDCS_CONNECTED_SYSTEM_NAME_3>>"

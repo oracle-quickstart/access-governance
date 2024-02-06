@@ -1,0 +1,33 @@
+{
+  "id": "1",
+  "name": "Test connectivity invoking schema API",
+  "method": "GET",
+  "uri":
+  {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Schemas"
+  },
+  "queryParameters":
+  [
+    {
+      "name": "startIndex",
+      "value": "1"
+    },
+    {
+      "name": "count",
+      "value": "1"
+    }
+  ],
+  "headers":
+  [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ]
+}

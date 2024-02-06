@@ -1,0 +1,5 @@
+application: "fa"
+connectedSystemConfigs:
+  - connectedSystemName: "<<FA_CONNECTED_SYSTEM_NAME_1>>"
+  - connectedSystemName: "<<FA_CONNECTED_SYSTEM_NAME_2>>"
+  - connectedSystemName: "<<FA_CONNECTED_SYSTEM_NAME_3>>"

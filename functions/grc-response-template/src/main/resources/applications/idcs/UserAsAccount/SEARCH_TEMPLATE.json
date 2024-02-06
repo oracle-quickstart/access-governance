@@ -1,0 +1,72 @@
+{
+  "items": "<JP>$.Resources[*]</JP>",
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].userName</JP>"
+    },
+    {
+      "name": "email",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].emails[?(@.primary == true)].value</JP>"
+    },
+    {
+      "name": "firstName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].name.familyName</JP>"
+    },
+    {
+      "name": "lastName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].name.givenName</JP>"
+    },
+    {
+      "name": "displayName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].displayName</JP>"
+    },
+    {
+      "name": "mailNickname",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].nickName</JP>"
+    },
+    {
+      "name": "usageLocation",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].addresses[?(@.type == 'work')].country</JP>"
+    },
+    {
+      "name": "city",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].addresses[?(@.type == 'work')].locality</JP>"
+    },
+    {
+      "name": "country",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].addresses[?(@.type == 'work')].country</JP>"
+    },
+    {
+      "name": "managerLogin",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].['urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'].manager.value</JP>"
+    },
+    {
+      "name": "preferredLanguage",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].preferredLanguage</JP>"
+    },
+    {
+      "name": "userType",
+      "value": "<EL>'Employee'</EL>"
+    },
+    {
+      "name": "status",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].active</JP>"
+    },
+    {
+      "name": "groups",
+      "responseOfSubRequestId": "1",
+      "items": "<JP>$.Resources[*]</JP>",
+      "subAttributes": [
+        {
+          "name": "uid",
+          "value": "<JP>$.Resources[<EL>currentIndex</EL>].id</JP>"
+        }
+      ]
+    }
+  ]
+}
