@@ -1,0 +1,5 @@
+application: "azuread"
+connectedSystemConfigs:
+  - connectedSystemName: "<<AZUREAD_CONNECTED_SYSTEM_NAME_1>>"
+  - connectedSystemName: "<<AZUREAD_CONNECTED_SYSTEM_NAME_2>>"
+  - connectedSystemName: "<<AZUREAD_CONNECTED_SYSTEM_NAME_3>>"

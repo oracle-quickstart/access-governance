@@ -1,0 +1,44 @@
+{
+  "id": "1",
+  "name": "Create User",
+  "method": "POST",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/hcmRestApi/scim/Users"
+  },
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ],
+  "body": {
+    "type": "text",
+    "textBody": {
+      "schemas": [
+        "urn:scim:schemas:core:2.0:User"
+      ],
+      "name": {
+        "familyName": "<EL>attributes.get('familyName').get(0)</EL>",
+        "givenName": "<EL>attributes.get('givenName').get(0)</EL>"
+      },
+      "active": true,
+      "userName": "<EL>attributes.get('name').get(0)</EL>",
+      "emails": [
+        {
+          "value": "<EL>attributes.get('email').get(0).value</EL>",
+          "type": "work",
+          "primary": true
+        }
+      ],
+      "password": "<EL>attributes.get('password').get(0)</EL>",
+      "displayName": "<EL>attributes.get('displayName').get(0)</EL>",
+      "externalId": "<EL>attributes.get('externalId').get(0)</EL>"
+    }
+  }
+}

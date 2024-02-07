@@ -1,0 +1,604 @@
+{
+  "schemaTemplates": [
+    {
+      "type": "ACCOUNT",
+      "name": "UserAsIdentity",
+      "displayName": "User As Identity",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "email",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "firstName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "middleName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "lastName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "displayName",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "employeeType",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "title",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "empNo",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "jobCode",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "state",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "risk",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "location",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "department",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "managerUid",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "organizationUid",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "organizationName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "postalCode",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "territory",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "usageLocation",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "country",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ],
+          "relationship": {
+            "relatedTo": "countries",
+            "relatedBy": "uid"
+          }
+        },
+        {
+          "name": "managerLogin",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "preferredLanguage",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ],
+          "relationship": {
+            "relatedTo": "languages",
+            "relatedBy": "uid"
+          }
+        },
+        {
+          "name": "status",
+          "dataType": "FLAG",
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ENTITLEMENT",
+      "name": "GroupAsEntitlement",
+      "displayName": "Group As Entitlement",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TARGETACCOUNT",
+      "name": "UserAsAccount",
+      "displayName": "User As Account",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "User ID",
+            "labelHint": "User ID",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getPrimaryEmail()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "User Name",
+            "labelHint": "User Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "email",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getPrimaryEmail()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Email",
+            "labelHint": "Email",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "firstName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getName().getGivenName()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "First Name",
+            "labelHint": "First Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "lastName",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "user.getName().getFamilyName()"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Last Name",
+            "labelHint": "Last Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "displayName",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "[user.getName().getGivenName(), user.getName().getFamilyName()].filter(element => { return element !== null && element.length > 0}).join(' ')"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Display Name",
+            "labelHint": "Display Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "mailNickname",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "[user.getName().getGivenName(), user.getName().getFamilyName()].filter(element => { return element !== null && element.length > 0}).join('')"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Nick Name",
+            "labelHint": "Nick Name",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "password",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED",
+            "SENSITIVE"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "User",
+            "widget": "Password",
+            "title": "Password",
+            "labelHint": "Password",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "usageLocation",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "countries"
+          },
+          "outboundTransformation": {
+            "script": "user.getLocation() != null ? transformationUtil.getLookupCode(agcs_tenant_id, agcs_target_id, 'countries', user.getLocation()) : null"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "SelectOne",
+            "title": "Location",
+            "labelHint": "Location",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "city",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "User",
+            "widget": "Text",
+            "title": "City",
+            "labelHint": "City",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "country",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "countries",
+            "relatedBy": "uid"
+          },
+          "outboundTransformation": {
+            "script": "user.getAddresses() != null && user.getAddresses().size() > 0 ? transformationUtil.getLookupCode(agcs_tenant_id, agcs_target_id, 'countries', user.getAddresses().get(0).getCountry()) : null"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "SelectOne",
+            "title": "Country",
+            "labelHint": "Country",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "managerLogin",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "uiProperties": {
+            "inputType": "Admin",
+            "widget": "Text",
+            "title": "Manager Login",
+            "labelHint": "Manager Login",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "preferredLanguage",
+          "dataType": "TEXT",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "languages",
+            "relatedBy": "uid"
+          },
+          "uiProperties": {
+            "inputType": "Admin",
+            "widget": "SelectOne",
+            "title": "Language",
+            "labelHint": "Language",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "userType",
+          "dataType": "TEXT",
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "status",
+          "dataType": "FLAG",
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "outboundTransformation": {
+            "script": "true"
+          },
+          "uiProperties": {
+            "inputType": "Auto",
+            "widget": "Text",
+            "title": "Status",
+            "labelHint": "Status",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        {
+          "name": "groups",
+          "dataType": "TEXT",
+          "nature": [
+            "MULTIVALUED"
+          ],
+          "usage": [
+            "READ",
+            "PROVISION"
+          ],
+          "relationship": {
+            "relatedTo": "GroupAsEntitlement",
+            "relatedBy": "uid",
+            "relationshipProperties": []
+          },
+          "uiProperties": {
+            "inputType": "Admin",
+            "widget": "RepeatableFieldSet",
+            "title": "Groups",
+            "labelHint": "Groups",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        }
+      ]
+    },
+    {
+      "name": "countries",
+      "type": "LOOKUP",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "languages",
+      "type": "LOOKUP",
+      "attributes": [
+        {
+          "name": "uid",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        },
+        {
+          "name": "name",
+          "dataType": "TEXT",
+          "nature": [
+            "REQUIRED"
+          ],
+          "usage": [
+            "READ"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+application: "idcs"
+connectedSystemConfigs:
+  - connectedSystemName: "<<CONNECTED_SYSTEM_NAME_1>>"
+    authenticationDetail:
+      scheme: "https"
+      host: "<<IDCS_AUTH_API_HOST_1>>"
+      path: "/oauth2/v1/token"
+      method: "POST"
+      grantType: "client_credentials"
+      scope: "urn:opc:idm:__myscopes__"
+      clientCode: "<<CLIENT_CODE_1>>"
+      clientSecret: "<<CLIENT_SECRET_1>>"
+    applicationInstanceDetail:
+      scheme: "https"
+      host: "<<IDCS_API_HOST_1>>"
+  - connectedSystemName: "<<CONNECTED_SYSTEM_NAME_2>>"
+    authenticationDetail:
+      scheme: "https"
+      host: "<<IDCS_AUTH_API_HOST_2>>"
+      path: "/oauth2/v1/token"
+      method: "POST"
+      grantType: "client_credentials"
+      scope: "urn:opc:idm:__myscopes__"
+      clientCode: "<<CLIENT_CODE_2>>"
+      clientSecret: "<<CLIENT_SECRET_2>>"
+    applicationInstanceDetail:
+      scheme: "https"
+      host: "<<IDCS_API_HOST_2>>"
+  - connectedSystemName: "<<CONNECTED_SYSTEM_NAME_3>>"
+    authenticationDetail:
+      scheme: "https"
+      host: "<<IDCS_AUTH_API_HOST_3>>"
+      path: "/oauth2/v1/token"
+      method: "POST"
+      grantType: "client_credentials"
+      scope: "urn:opc:idm:__myscopes__"
+      clientCode: "<<CLIENT_CODE_3>>"
+      clientSecret: "<<CLIENT_SECRET_3>>"
+    applicationInstanceDetail:
+      scheme: "https"
+      host: "<<IDCS_API_HOST_3>>"

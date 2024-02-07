@@ -1,0 +1,20 @@
+{
+  "id": "1",
+  "name": "Get Group",
+  "method": "GET",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Groups/<EL>attributes.get('groups').get('uid').get(0)</EL>"
+  },
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ]
+}

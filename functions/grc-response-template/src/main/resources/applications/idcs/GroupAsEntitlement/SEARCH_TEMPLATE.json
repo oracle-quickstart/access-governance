@@ -1,0 +1,13 @@
+{
+  "items": "<JP>$.Resources[*]</JP>",
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].displayName</JP>"
+    }
+  ]
+}

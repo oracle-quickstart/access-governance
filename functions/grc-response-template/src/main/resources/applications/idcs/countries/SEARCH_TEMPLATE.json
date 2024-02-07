@@ -1,0 +1,13 @@
+{
+  "items": "<JP>$.attrValues[*]</JP>",
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.attrValues[<EL>currentIndex</EL>].value</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.attrValues[<EL>currentIndex</EL>].value</JP>"
+    }
+  ]
+}

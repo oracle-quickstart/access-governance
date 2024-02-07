@@ -1,0 +1,58 @@
+{
+  "id": "1",
+  "name": "Get User By ID",
+  "method": "GET",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Users/<EL>attributes.get('uid').get(0)</EL>"
+  },
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ],
+  "subRequests": [
+    {
+      "id": "1",
+      "name": "Search User Membership",
+      "paginationType": "OFFSET",
+      "method": "POST",
+      "uri": {
+        "scheme": "<<SCHEME>>",
+        "host": "<<HOST>>",
+        "path": "/admin/v1/Groups/.search"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "<<CREDENTIALS>>"
+        }
+      ],
+      "body": {
+        "type": "text",
+        "textBody": {
+          "schemas": [
+            "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
+          ],
+          "attributes": [
+            "displayName",
+            "externalId"
+          ],
+          "filter": "members.value eq  \"<JP>$.id</JP>\"",
+          "startIndex": "<EL>currentOffset</EL>",
+          "count": "<EL>limit</EL>"
+        }
+      }
+    }
+  ]
+}

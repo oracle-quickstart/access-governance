@@ -1,0 +1,33 @@
+{
+  "items": "<JP>$.Resources[*]</JP>",
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].id</JP>"
+    },
+    {
+      "name": "name",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].name</JP>"
+    },
+    {
+      "name": "displayName",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].displayName</JP>"
+    },
+    {
+      "name": "description",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].description</JP>"
+    },
+    {
+      "name": "category",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].category</JP>"
+    },
+    {
+      "name": "type",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].type</JP>"
+    },
+    {
+      "name": "lastModified",
+      "value": "<JP>$.Resources[<EL>currentIndex</EL>].meta.lastModified</JP>"
+    }
+  ]
+}

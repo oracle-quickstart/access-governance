@@ -1,0 +1,73 @@
+{
+  "id": "1",
+  "name": "Search Users sort by displayName",
+  "paginationType": "OFFSET",
+  "method": "GET",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Users"
+  },
+  "queryParameters": [
+    {
+      "name": "startIndex",
+      "value": "<EL>currentOffset</EL>"
+    },
+    {
+      "name": "count",
+      "value": "<EL>limit</EL>"
+    },
+    {
+      "name": "sortBy",
+      "value": "displayName"
+    }
+  ],
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ],
+  "subRequests": [
+    {
+      "id": "1",
+      "name": "Search User membership",
+      "paginationType": "OFFSET",
+      "method": "POST",
+      "uri": {
+        "scheme": "<<SCHEME>>",
+        "host": "<<HOST>>",
+        "path": "/admin/v1/Groups/.search"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "<<CREDENTIALS>>"
+        }
+      ],
+      "body": {
+        "type": "text",
+        "textBody": {
+          "schemas": [
+            "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
+          ],
+          "attributes": [
+            "displayName",
+            "externalId"
+          ],
+          "filter": "members.value eq  \"<JP>$.Resources[<EL>parentCurrentIndex</EL>].id</JP>\"",
+          "startIndex": "<EL>currentOffset</EL>",
+          "count": "<EL>limit</EL>"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "1",
+  "name": "Delete User",
+  "method": "DELETE",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Users/<EL>attributes.get('uid').get(0)</EL>"
+  },
+  "queryParameters": [
+    {
+      "name": "forceDelete",
+      "value": "true"
+    }
+  ],
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ]
+}

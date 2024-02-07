@@ -1,0 +1,36 @@
+{
+  "id": "1",
+  "name": "Search Groups sort by displayName",
+  "paginationType": "OFFSET",
+  "method": "POST",
+  "uri": {
+    "scheme": "<<SCHEME>>",
+    "host": "<<HOST>>",
+    "path": "/admin/v1/Groups/.search"
+  },
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "<<CREDENTIALS>>"
+    }
+  ],
+  "body": {
+    "type": "text",
+    "textBody": {
+      "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
+      ],
+      "attributes": [
+        "displayName",
+        "externalId"
+      ],
+      "sortBy": "displayName",
+      "startIndex": "<EL>currentOffset</EL>",
+      "count": "<EL>limit</EL>"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "attributes": [
+    {
+      "name": "uid",
+      "value": "<EL>attributes.get('uid').get(0)</EL>"
+    }
+  ]
+}

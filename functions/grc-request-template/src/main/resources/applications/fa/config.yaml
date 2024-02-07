@@ -1,0 +1,23 @@
+application: "fa"
+connectedSystemConfigs:
+  - connectedSystemName: "<<FA_CONNECTED_SYSTEM_NAME_1>>"
+    authenticationDetail:
+      clientCode: "<<CLIENT_CODE_1>>"
+      clientSecret: "<<CLIENT_SECRET_1>>"
+    applicationInstanceDetail:
+      scheme: "https"
+      host: "<<FA_API_HOST_1>>"
+  - connectedSystemName: "<<FA_CONNECTED_SYSTEM_NAME_2>>"
+    authenticationDetail:
+      clientCode: "<<CLIENT_CODE_2>>"
+      clientSecret: "<<CLIENT_SECRET_2>>"
+    applicationInstanceDetail:
+      scheme: "https"
+      host: "<<FA_API_HOST_2>>"
+  - connectedSystemName: "<<FA_CONNECTED_SYSTEM_NAME_3>>"
+    authenticationDetail:
+      clientCode: "<<CLIENT_CODE_3>>"
+      clientSecret: "<<CLIENT_SECRET_3>>"
+    applicationInstanceDetail:
+      scheme: "https"
+      host: "<<FA_API_HOST_3>>"
