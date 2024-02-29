@@ -15,7 +15,7 @@ def get_instance_app_ocid(ag_si_name):
         app_search_response = response.data.resources[0]
         return app_search_response.ocid
     else:
-        return "NO APPS RETURNED!!!"
+        raise ValueError("SI_"+ag_si_name+"_DOES_NOT_EXIST")
 
 
 def get_app_details(ag_si_name):
